@@ -1,0 +1,92 @@
+/* General styles */
+html {
+    scroll-behavior: smooth;
+}
+body {
+    background-color: #dedede;
+    padding: 5px;
+    margin: 15px;
+    font-size: 25px;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.95em;
+}
+
+/* Mobile-first: One-column grid */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 10px;
+}
+
+figure {
+    background-color: white;
+    padding: 10px;
+    border: 5px solid blue;
+    border-radius: 35px;
+    text-align: center;
+}
+
+img {
+    width: 100%;
+    display: block;
+    border-radius: 15px;
+}
+
+/* Tablet View: 772px */
+@media (min-width: 772px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    figure {
+        border-radius: 50%; /* Circular shape */
+        overflow: hidden;  /* Ensure images fit inside circular figures */
+    }
+    figure:last-child {
+        grid-column: span 2; /* Last figure spans both columns */
+    }
+}
+
+/* Large Screen View: 992px */
+@media (min-width: 992px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    figure {
+        border-radius: 0; /* Remove circular border */
+    }
+    figure:nth-child(3n) {
+        grid-column: span 2; /* Every third figure spans both columns */
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #222;
+        color: #eee;
+    }
+    figure {
+        background-color: #333;
+        color: #ffd700; /* Yellowish text */
+        border-color: black;
+    }
+    figcaption {
+        background-color: #333; /* Match figure background */
+    }
+}
